@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+    <Title>Student Form Validation</Title>
+</head>
+<body>
+    <h1 style="text-align: center;">School Admission Form</h1>
+    <form name="myForm"  onsubmit="return validateForm()" method="GET">
+
+        <div class = "form-group" style="text-align: center;" >
+
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter first name"><span id = "vname" style="color: red;"></span><br><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter last name"><span id = "vlname" style="color: red;"></span><br><br>
+            <label for="class">Class:</label>
+            <input type="text" id="class" name="class" placeholder="Enter class"><span id = "vclass" style="color: red;"></span><br><br>
+            <label for="year">Year of Passing:</label>
+            <input type="text" id="year" name="year" placeholder="Enter year of passing"><span id = "vyear" style="color: red;"></span><br><br>
+            <label for="marks">Percentage of Marks:</label>
+            <input type="text" id="marks" name="marks" placeholder="Enter marks"><span id = "vmarks" style="color: red;"></span><br><br>
+            <div id = "submit"><input type="submit" value="Submit"></div>
+
+        </div>
+
+
+    </form>
+
+    <script>
+         function validateForm(){
+
+
+            var firstname = document.forms["myForm"]["fname"].value;
+            var lastname = document.forms["myForm"]["lname"].value;
+            var classname = document.forms["myForm"]["class"].value;
+            var yearnumber = document.forms["myForm"]["year"].value;
+            var marksnumber = document.forms["myForm"]["marks"].value;
+
+
+                if (firstname == "" || lastname == "" || classname == "" || yearnumber == "" || marksnumber == "" ) {
+                window.alert("All fields must be filled");
+                document.getElementById("submit").innerHTML ="";
+                return false;
+                }
+
+                else if (firstname.length>20){
+                    document.getElementById("vname").innerHTML=  "Name cannot exceed 20 characters";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+                else if(!/^[a-zA-Z]*$/g.test(document.forms["myForm"]["fname"].value)){
+                    document.getElementById("vname").innerHTML=  "Name must contain only alphabets";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+            
+                else if (lastname == "") {
+                document.getElementById("vlname").innerHTML=  "Name cannot be empty";
+                document.getElementById("submit").innerHTML ="";
+                return false;
+                }
+                else if (lastname.length>20){
+                    document.getElementById("vlname").innerHTML=  "Name cannot exceed 20 characters";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+                else if(!/^[a-zA-Z]*$/g.test(document.forms["myForm"]["lname"].value)){
+                    document.getElementById("vlname").innerHTML=  "Name must contain only alphabets";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+     
+
+                else if (classname == "") {
+                document.getElementById("vclass").innerHTML=  "Class cannot be empty";
+                document.getElementById("submit").innerHTML ="";
+                return false;
+                }
+ 
+                else if (yearnumber == "") {
+                document.getElementById("vyear").innerHTML=  "Year of Passing cannot be empty";
+                document.getElementById("submit").innerHTML ="";
+                return false;
+                }
+                else if(document.forms["myForm"]["year"].value>2017){
+                    document.getElementById("vyear").innerHTML=  "Invalid Year";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+
+                }
+                else if(!!/^[a-zA-Z]*$/g.test(document.forms["myForm"]["year"].value)){
+                    document.getElementById("vyear").innerHTML=  "Year must only contain number";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+
+                else if (marksnumber == "") {
+                document.getElementById("vmarks").innerHTML=  "Marks cannot be empty";
+                document.getElementById("submit").innerHTML ="";
+                return false;
+                }
+                else if(document.forms["myForm"]["marks"].value>100){
+                    document.getElementById("vmarks").innerHTML=  "Percentage cannot be greater than 100";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+
+                }
+                else if(!!/^[a-zA-Z]*$/g.test(document.forms["myForm"]["marks"].value)){
+                    document.getElementById("vmarks").innerHTML=  "Marks must only contain number";
+                    document.getElementById("submit").innerHTML ="";
+                    return false;
+                }
+
+                else{
+                    return true;
+                    
+                }
+           
+                }
+    </script>
+
+</body>
+
+</html>
+
+
+

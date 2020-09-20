@@ -1,0 +1,79 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<link rel="stylesheet" href="Styles.css">
+
+<head><title>Student Result Board</title></head>
+<table >
+    <tr><th colspan="4" >Student Result Board</th></tr>
+    <tr>
+    <th><i>Student Name</i></th>
+    <th><i>Roll Number</i></th>
+    <th><i>Total Marks</i></th>
+    <th><i>Status</i></th>
+    </tr>
+
+    <tbody id="myTable">
+ 
+        
+    </tbody>
+</table>
+
+<script>
+
+$(document).ready(function () {
+            $.getJSON('data.json', function (data) {
+                console.log(data)
+                var student_data = '';
+                $.each(data, function (key,value){
+                    var sum = (parseInt(value.marks.Maths) + parseInt(value.marks.Science) + parseInt(value.marks.English));
+                    var Name = value.name.charAt(0).toUpperCase() + value.name.slice(1);
+                    var status = "";
+                    if (parseInt(value.marks.Maths)>20 && parseInt(value.marks.Science)>20 && parseInt(value.marks.English)>20){
+                        status = "Pass"
+                        // document.getElementById("row").style.color = 'red';
+                        if(sum>110)
+                    {
+                        status = "Topper"
+                    }
+                    }
+    
+                  
+                    else{
+                        status = "Fail"
+                       // document.getElementById("row").style.color = 'red';
+                    }
+                    student_data += '<tr class ="item" id="row">';
+                    student_data += '<td>' + Name + '</td>';
+                    student_data += '<td>' + value.rollNumber + '</td>';
+                    student_data += '<td>' + sum+ '</td>';
+                    student_data += '<td>' + status + '</td>';
+                    student_data += '</tr>';    
+                    });
+                    $('#myTable').append(student_data);
+                    w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')
+                    
+
+            });
+        });
+        
+      
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

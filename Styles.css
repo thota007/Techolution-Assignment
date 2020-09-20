@@ -1,0 +1,33 @@
+table {
+    border-collapse: collapse;
+  }
+  
+  th {
+    text-align: left;
+    color: black;
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+    
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+  }
+  table tr:nth-child(n+16) {
+    display:none;
+  }
+
+
+  tbody>:nth-child(2){ 
+    color:red;
+     }
+
+   tbody>:nth-child(3){ 
+   color:rgb(30, 172, 30);
+    }
+   
+
+  
+ 
